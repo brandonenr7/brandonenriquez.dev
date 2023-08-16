@@ -86,5 +86,29 @@
             <x-icon-github class="h-5 w-5 fill-current mr-2" />
             <span>View GitHub Repository</span>
         </a>
+
+        <h2 class="font-medium tracking-wide text-3xl mt-12 mb-2">Latest Posts</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+            @foreach ($posts as $post)
+                <div class="bg-white dark:bg-gray-800 rounded shadow overflow-hidden">
+                        <a href="{{ route('posts.show', $post) }}" class="block">
+                            <img src="{{ $post->image ?? Vite::asset('resources/img/post-banner-default.png') }}" alt="{{ $post->title }}" class="object-cover">
+                        </a>
+                    <div class="flex flex-col gap-2 p-4">
+                        <a href="{{ route('posts.show', $post) }}" class="font-semibold text-lg hover:text-indigo-500">
+                            {{ $post->title }}
+                        </a>
+                        <p class="text-sm dark:text-gray-400">
+                            {{ $post->teaser }}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
+            @if ($posts->hasPages())
+                <div class="w-full mt-8">
+                    {{ $posts->links() }}
+                </div>
+            @endif
+        </div>
     </div>
 </x-app-layout>
