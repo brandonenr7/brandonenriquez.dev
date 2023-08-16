@@ -25,28 +25,40 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->unique(Post::class, 'slug', ignoreRecord: true)
-                    ->maxLength(255),
-                Forms\Components\MarkdownEditor::make('content')
-                    ->required()
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('description')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('teaser')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
+                Forms\Components\Section::make()
+                    ->heading('Post Content')
+                    ->collapsible()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                        Forms\Components\MarkdownEditor::make('content')
+                            ->required()
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('description')
+                            ->nullable()
+                            ->columnSpanFull(),
+                    ]),
+                Forms\Components\Section::make()
+                    ->heading('Meta Details')
+                    ->collapsible()
+                    ->columns(2)
+                    ->schema([
+                        Forms\Components\Select::make('user_id')
+                            ->label('Author')
+                            ->relationship('user', 'name')
+                            ->required(),
+                        Forms\Components\TextInput::make('slug')
+                            ->required()
+                            ->unique(Post::class, 'slug', ignoreRecord: true)
+                            ->maxLength(255),
+                        Forms\Components\Textarea::make('teaser')
+                            ->nullable()
+                            ->columnSpanFull(),
+                        Forms\Components\FileUpload::make('image')
+                            ->image(),
+                    ]),
             ]);
     }
 
@@ -85,14 +97,14 @@ class PostResource extends Resource
                 Tables\Actions\CreateAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -100,5 +112,5 @@ class PostResource extends Resource
             'create' => Pages\CreatePost::route('/create'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }    
+    }
 }
