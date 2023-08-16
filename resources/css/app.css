@@ -1,9 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.post-content {
-    @apply prose;
-
-    prose-a: text-indigo-500;
-}

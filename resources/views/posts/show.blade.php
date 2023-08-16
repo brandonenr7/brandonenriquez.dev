@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="{{ $post->title }}">
     <article class="max-w-3xl px-4 lg:px-0 mx-auto">
         @if ($post->image)
             <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="object-contain mt-6" />
@@ -33,7 +33,7 @@
         </ul>
 
         {{-- Content --}}
-        <div class="post-content mt-4">
+        <div class="prose dark:prose-invert mt-4">
             {!! $post->rendered_content !!}
         </div>
     </article>
