@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,9 +46,6 @@ class User extends Authenticatable implements FilamentUser
 
     /**
      * Validate if the user can access the panel.
-     *
-     * @param \Filament\Panel $panel
-     * @return boolean
      */
     public function canAccessPanel(Panel $panel): bool
     {

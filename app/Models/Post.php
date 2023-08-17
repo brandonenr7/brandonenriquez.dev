@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
@@ -14,8 +14,6 @@ class Post extends Model
 
     /**
      * Create relationship to parent user.
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
     {
@@ -24,8 +22,6 @@ class Post extends Model
 
     /**
      * Render markdown content as HTML.
-     * 
-     * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
     public function renderedContent(): Attribute
     {

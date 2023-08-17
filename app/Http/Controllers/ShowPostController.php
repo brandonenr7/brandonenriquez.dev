@@ -9,8 +9,8 @@ class ShowPostController extends Controller
 {
     /**
      * Show an individual post.
-     * 
-     * @param \App\Models\Post $post
+     *
+     * @return \Illuminate\View\View
      */
     public function __invoke(Post $post): View
     {

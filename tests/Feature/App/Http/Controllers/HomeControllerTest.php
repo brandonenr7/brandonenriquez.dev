@@ -1,8 +1,9 @@
 <?php
 
-use function Pest\Laravel\get;
 use App\Http\Controllers\HomeController;
 use App\Models\Post;
+
+use function Pest\Laravel\get;
 
 it('extends base controller class')
     ->expect(HomeController::class)
