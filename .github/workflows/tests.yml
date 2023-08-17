@@ -8,18 +8,14 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.0
+        image: mysql:latest
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: laravel
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
  
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
- 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -28,7 +24,10 @@ jobs:
           coverage: xdebug
 
       - name: Setup MySQL
-        run: mysql -u root -h 127.0.0.1 -P ${{ job.services.mysql.ports['3306'] }} -e 'CREATE DATABASE ${{ env.DB_DATABASE }};'
+        run: mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -e 'CREATE DATABASE IF NOT EXISTS testing;'
+
+      - name: Checkout
+        uses: actions/checkout@v3
       
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
