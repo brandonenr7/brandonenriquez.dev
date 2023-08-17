@@ -42,3 +42,7 @@ jobs:
         run: ./vendor/bin/pest --coverage
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
+      
+      - name: Deploy to Production server
+        run: wget -q ${{ secrets.DEPLOY_WEBHOOK }}
+        if: github.ref == 'refs/heads/main' && success()
