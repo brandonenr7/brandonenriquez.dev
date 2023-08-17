@@ -39,18 +39,6 @@ jobs:
         run: php artisan key:generate
 
       - name: Tests
-        run: ./vendor/bin/pest --coverage-clover coverage.xml
+        run: ./vendor/bin/pest --coverage
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-
-      - name: Upload coverage
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage.xml
-
-      - name: Report Coverage
-        uses: danhunsaker/clover-reporter-action@v0.2.17-clover
-        with:
-          clover-file: coverage.xml
-          github-token: ${{ secrets.GITHUB_TOKEN }}
