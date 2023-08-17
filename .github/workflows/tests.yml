@@ -39,6 +39,6 @@ jobs:
         run: php artisan key:generate
 
       - name: Tests
-        run: ./vendor/bin/pest -—coverage-clover coverage.xml
+        run: ./vendor/bin/pest --coverage-clover coverage.xml
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
