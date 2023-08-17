@@ -1,0 +1,45 @@
+name: Tests
+ 
+on: ['push', 'pull_request']
+ 
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: laravel
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+ 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+ 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: Setup MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u root
+      
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+ 
+      - name: Install Dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Tests
+        run: ./vendor/bin/pest
