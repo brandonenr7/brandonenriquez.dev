@@ -24,7 +24,7 @@ jobs:
           coverage: xdebug
 
       - name: Setup MySQL
-        run: mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -e 'CREATE DATABASE IF NOT EXISTS testing;'
+        run: mysql -h 127.0.0.1 -P ${{ job.services.mysql.ports['3306'] }} -uroot -e 'CREATE DATABASE IF NOT EXISTS testing;'
 
       - name: Checkout
         uses: actions/checkout@v3
@@ -40,3 +40,5 @@ jobs:
 
       - name: Tests
         run: ./vendor/bin/pest
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
