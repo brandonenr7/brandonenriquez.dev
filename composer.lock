@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "76bbd9496809e265c2a6192f20fd9aa7",
+    "content-hash": "69fe15bfab713cdbf39f99e98ccf0d84",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -10521,6 +10521,70 @@
                 }
             ],
             "time": "2023-06-28T13:51:52+00:00"
+        },
+        {
+            "name": "spatie/pest-expectations",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/pest-expectations.git",
+                "reference": "f54daf8771a1b6787fb4e45a536fe8cfefca364f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/pest-expectations/zipball/f54daf8771a1b6787fb4e45a536fe8cfefca364f",
+                "reference": "f54daf8771a1b6787fb4e45a536fe8cfefca364f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^10.7",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "illuminate/contracts": "^9.47|^10.0",
+                "laravel/pint": "^1.2",
+                "orchestra/testbench": "^8.3",
+                "pestphp/pest": "^1.20|^2.0",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/PestExpectations.php",
+                    "src/Helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\PestExpectations\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A collection of handy custom Pest customisations",
+            "homepage": "https://github.com/spatie/pest-expectations",
+            "keywords": [
+                "pest-expectations",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/pest-expectations/issues",
+                "source": "https://github.com/spatie/pest-expectations/tree/1.5.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-05-17T20:25:55+00:00"
         },
         {
             "name": "symfony/yaml",
