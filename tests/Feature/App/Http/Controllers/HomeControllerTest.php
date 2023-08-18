@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Models\Post;
+use App\Models\Project;
 
 use function Pest\Laravel\get;
 
@@ -34,4 +35,31 @@ it('shows latest posts', function () {
 
     expect($latestPosts->first())
         ->toBeModel($post);
+});
+
+it('shows projects', function () {
+    Project::factory()->count(5)->create();
+
+    $this->get(route('home'))
+        ->assertViewHas('projects', fn ($results) => $results->count() === 5);
+});
+
+it('only shows visible projects', function () {
+    Project::factory()->count(4)->create();
+    $hiddenProject = Project::factory()->hidden()->create();
+
+    $this->get(route('home'))
+        ->assertViewHas('projects', fn ($results) => $results->count() === 4
+            && ! $results->contains($hiddenProject)
+        );
+});
+
+it('prioritizes featued projects in ordering', function () {
+    $featuredProject = Project::factory()->featured()->create();
+    Project::factory()->count(4)->create();
+
+    $this->get(route('home'))
+        ->assertViewHas('projects', fn ($results) => $results->count() === 5
+            && $results->first()->is($featuredProject)
+        );
 });

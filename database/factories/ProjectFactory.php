@@ -27,4 +27,18 @@ class ProjectFactory extends Factory
             'image' => fake()->imageUrl,
         ];
     }
+
+    public function featured(): self
+    {
+        return $this->state([
+            'featured' => true,
+        ]);
+    }
+
+    public function hidden(): self
+    {
+        return $this->state([
+            'visible' => false,
+        ]);
+    }
 }
