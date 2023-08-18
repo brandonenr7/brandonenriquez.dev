@@ -31,7 +31,7 @@ class ProjectResource extends Resource
                     ->url()
                     ->maxLength(255)
                     ->suffixIcon('heroicon-m-globe-alt'),
-                Forms\Components\TextArea::make('summary')
+                Forms\Components\Textarea::make('summary')
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
