@@ -1,7 +1,7 @@
 <x-app-layout>
     <article class="max-w-3xl px-4 lg:px-0 mx-auto">
         @if ($post->image)
-            <img src="{{ asset($post->image) }}" alt="{{ $post->title }}" class="object-contain mt-6" />
+            <img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}" class="object-contain mt-6" />
         @endif
 
         {{-- Top Navigation --}}

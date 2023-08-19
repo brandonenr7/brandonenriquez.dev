@@ -35,7 +35,7 @@ class Project extends Model
     {
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => $attributes['image']
-                ? asset($attributes['image'])
+                ? asset('storage/'.$attributes['image'])
                 : Vite::asset('resources/img/post-banner-default.png')
         );
     }

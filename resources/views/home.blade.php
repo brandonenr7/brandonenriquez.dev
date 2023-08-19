@@ -68,7 +68,7 @@
             @foreach ($posts as $post)
                 <div class="bg-white dark:bg-gray-800 rounded shadow overflow-hidden">
                         <a href="{{ route('posts.show', $post) }}" class="block">
-                            <img src="{{ asset($post->image) ?? Vite::asset('resources/img/post-banner-default.png') }}" alt="{{ $post->title }}" class="object-cover">
+                            <img src="{{ asset('storage/'.$post->image) ?? Vite::asset('resources/img/post-banner-default.png') }}" alt="{{ $post->title }}" class="object-cover">
                         </a>
                     <div class="flex flex-col gap-2 p-4">
                         <a href="{{ route('posts.show', $post) }}" class="font-semibold text-lg hover:text-indigo-500">
