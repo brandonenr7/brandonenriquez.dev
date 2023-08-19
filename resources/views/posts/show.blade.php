@@ -17,5 +17,8 @@
         <div class="prose dark:prose-invert mt-4">
             {!! $post->rendered_content !!}
         </div>
+
+        {{-- Author Footer --}}
+        <x-posts::author-footer :user="$post->user" class="mt-8" />
     </article>
 </x-app-layout>
