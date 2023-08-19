@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Personal website, portfolio, and blog of Brandon Enrqiuez" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="{{ $description ?? '' }}" />
 
-    <title>{{ $title ?? config('app.name') }}</title>
+    <meta name="og:title" content="{{ $title ?? config('app.name') }}" />
+    <meta name="og:description" content="{{ $description ?? '' }}" />
+    <meta name="og:url" content="{{ url()->current() }}" />
+    <meta name="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@brandonenr7" />
+    <meta name="twitter:title" content="{{ $title ?? config('app.name') }}" />
+    <meta name="twitter:description" content="{{ $description ?? '' }}" />
+
+    @if ($image)
+        <meta name="og:image" content="{{ $image }}" />
+        <meta name="twitter:image" content="{{ $image }}" />
+    @endif
+
+    <title>{{ ! empty($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
 
     @googlefonts
 
@@ -15,7 +30,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900 font-sans antialiased text-gray-800 dark:text-gray-100">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
     <div>
         <main>
             {{ $slot }}
