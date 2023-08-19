@@ -54,7 +54,8 @@ class PostResource extends Resource
                             ->nullable()
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('image')
-                            ->image(),
+                            ->image()
+                            ->directory('post-images'),
                     ]),
             ]);
     }

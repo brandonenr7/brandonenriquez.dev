@@ -34,7 +34,8 @@ class ProjectResource extends Resource
                 Forms\Components\Textarea::make('summary')
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->directory('project-images'),
                 \Filament\Forms\Components\Section::make()
                     ->heading('Meta Data')
                     ->schema([
