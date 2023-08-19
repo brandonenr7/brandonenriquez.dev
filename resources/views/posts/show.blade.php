@@ -10,7 +10,7 @@
         </x-posts::breadcrumbs>
     
         {{-- Header --}}
-        <h1 class="text-4xl mb-2">{{ $post->title }}</h1>
+        <h1 class="text-3xl sm:text-4xl mb-2">{{ $post->title }}</h1>
         <x-posts::meta-details :user="$post->user" :timestamp="$post->created_at" />
 
         {{-- Content --}}
