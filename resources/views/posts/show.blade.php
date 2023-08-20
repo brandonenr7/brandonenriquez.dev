@@ -14,7 +14,7 @@
         <x-posts::meta-details :user="$post->user" :timestamp="$post->created_at" />
 
         {{-- Content --}}
-        <div class="prose dark:prose-invert mt-4">
+        <div class="content max-w-3xl mt-4">
             {!! $post->rendered_content !!}
         </div>
 
