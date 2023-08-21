@@ -21,6 +21,10 @@
         <meta name="twitter:image" content="{{ $image }}" />
     @endif
 
+    @if (app()->environment('production'))
+        <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="HUQHWHBM" defer></script>
+    @endif
+
     <title>{{ ! empty($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
 
     @googlefonts
