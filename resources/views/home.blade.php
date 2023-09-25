@@ -71,9 +71,13 @@
             @endif
         </h2>
         <div class="grid md:grid-cols-2 gap-4">
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
                 <x-post-card :$post />
-            @endforeach
+            @empty
+                <p class="md:col-span-2 text-gray-600 dark:text-gray-400 py-4">
+                    There are no posts to display at this time.  Check back at a later time!
+                </p>
+            @endforelse
             @if ($posts->hasPages())
                 <div class="w-full mt-8">
                     {{ $posts->links() }}
