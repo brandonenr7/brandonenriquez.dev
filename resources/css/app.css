@@ -6,8 +6,8 @@
     @apply prose max-w-3xl
     prose-a:text-indigo-500
     hover:prose-a:text-indigo-600
-    dark:hover:prose-a:text-indigo-400
-    prose-headings:dark:text-white
     prose-strong:text-current
     dark:text-gray-300
+    prose-headings:dark:text-white
+    dark:hover:prose-a:text-indigo-400;
 }

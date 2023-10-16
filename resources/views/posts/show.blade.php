@@ -1,20 +1,33 @@
-<x-app-layout :title="$post->title" :description="$post->description" :image="asset('storage/'.$post->image)">
-    <article class="max-w-3xl px-4 lg:px-0 mx-auto">
+<x-app-layout
+    :title="$post->title"
+    :description="$post->description"
+    :image="asset('storage/'.$post->image)"
+>
+    <article class="mx-auto max-w-3xl px-4 lg:px-0">
         @if ($post->image)
-            <img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}" class="object-contain mt-6" />
+            <img
+                src="{{ asset('storage/'.$post->image) }}"
+                alt="{{ $post->title }}"
+                class="mt-6 object-contain"
+            />
         @endif
 
         {{-- Top Navigation --}}
         <x-posts::breadcrumbs class="my-6">
-            <x-posts::breadcrumb-item>{{ $post->title }}</x-posts::breadcrumb-item>
+            <x-posts::breadcrumb-item>
+                {{ $post->title }}
+            </x-posts::breadcrumb-item>
         </x-posts::breadcrumbs>
-    
+
         {{-- Header --}}
-        <h1 class="text-3xl sm:text-4xl mb-2">{{ $post->title }}</h1>
-        <x-posts::meta-details :user="$post->user" :timestamp="$post->created_at" />
+        <h1 class="mb-2 text-3xl sm:text-4xl">{{ $post->title }}</h1>
+        <x-posts::meta-details
+            :user="$post->user"
+            :timestamp="$post->created_at"
+        />
 
         {{-- Content --}}
-        <div class="content max-w-3xl mt-4">
+        <div class="content mt-4 max-w-3xl">
             {!! $post->rendered_content !!}
         </div>
 
