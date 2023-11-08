@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Vite;
 
 class Project extends Model
@@ -35,7 +36,7 @@ class Project extends Model
     {
         return Attribute::make(
             get: fn (mixed $value, array $attributes) => $attributes['image']
-                ? asset('storage/'.$attributes['image'])
+                ? Storage::url($attributes['image'])
                 : Vite::asset('resources/img/post-banner-default.png')
         );
     }

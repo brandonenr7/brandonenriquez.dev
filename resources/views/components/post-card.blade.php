@@ -1,7 +1,7 @@
 <div class="rounded bg-white shadow-md dark:bg-gray-800">
     <a href="{{ route('posts.show', $post) }}">
         <img
-            src="{{ asset('storage/'.$post->image) ?? Vite::asset('resources/img/post-banner-default.png') }}"
+            src="{{ Storage::url($post->image) ?? Vite::asset('resources/img/post-banner-default.png') }}"
             alt="{{ $post->title }}"
             class="rounded-t object-cover"
         />

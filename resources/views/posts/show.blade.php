@@ -1,12 +1,12 @@
 <x-app-layout
     :title="$post->title"
     :description="$post->description"
-    :image="asset('storage/'.$post->image)"
+    :image="Storage::url($post->image)"
 >
     <article class="mx-auto max-w-3xl px-4 lg:px-0">
         @if ($post->image)
             <img
-                src="{{ asset('storage/'.$post->image) }}"
+                src="{{ Storage::url($post->image) }}"
                 alt="{{ $post->title }}"
                 class="mt-6 object-contain"
             />
