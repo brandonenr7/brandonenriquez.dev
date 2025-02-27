@@ -34,7 +34,7 @@ it('shows latest posts', function () {
         ->toHaveCount(1);
 
     expect($latestPosts->first())
-        ->toBeModel($post);
+        ->is($post);
 });
 
 it('shows projects', function () {
