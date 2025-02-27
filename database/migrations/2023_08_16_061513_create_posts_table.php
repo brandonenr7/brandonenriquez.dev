@@ -20,10 +20,8 @@ return new class extends Migration
             $table->text('content');
             $table->text('description')->nullable();
             $table->text('teaser')->nullable();
-            $table->foreignIdFor(User::class)->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
-
-            $table->fullText(['content', 'description', 'teaser']);
         });
     }
 
