@@ -11,8 +11,7 @@ class AppLayout extends Component
         public ?string $title = null,
         public ?string $description = null,
         public ?string $image = null,
-    ) {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represents the component.
